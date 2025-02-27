@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If no errors, insert into the database
     if (empty($name_err) && empty($student_id_err) && empty($class_err) && empty($parent_phone_err)) {
-        $sql = "INSERT INTO students (name, student_id, class, parent_phone) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO students (name, student_id, class, parent_contact) VALUES (?, ?, ?, ?)";
 
         if ($stmt = mysqli_prepare($connection, $sql)) {
             mysqli_stmt_bind_param($stmt, "ssss", $param_name, $param_student_id, $param_class, $param_parent_phone);
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to student list page
-                header("location: student_list.php");
+                header("location: dashboard.php");
                 exit();
             } else {
                 echo "Something went wrong. Please try again.";

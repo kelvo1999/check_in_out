@@ -1,0 +1,147 @@
+/* General Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Header */
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 10px;
+    text-align: left;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    /* Ensures it stays on top */
+}
+
+
+/* Profile & Log Out */
+
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-section a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.profile-section a:hover {
+    text-decoration: underline;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    background: #222;
+    color: white;
+    position: fixed;
+    top: 50px;
+    /* Ensures it starts below header */
+    left: 0;
+    height: calc(100% - 50px);
+    /* Adjust height */
+    padding: 15px;
+    transition: 0.3s;
+    overflow-y: auto;
+    /* Allows scrolling if needed */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background: #444;
+}
+
+
+/* Sidebar Toggle Button */
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    /* Hide on larger screens */
+}
+
+
+/* Main Content */
+
+.dashboard {
+    margin-left: 260px;
+    /* Leave space for sidebar */
+    margin-top: 100px;
+    /* Push content below header */
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.stat-box {
+    background: #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+/* Mobile Responsive */
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+        top: 50px;
+    }
+    .sidebar.active {
+        width: 250px;
+    }
+    .toggle-btn {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+    }
+    .dashboard {
+        margin-left: 0;
+        margin-top: 70px;
+    }
+}
